@@ -1,7 +1,7 @@
 FROM envoyproxy/envoy-build-centos:latest AS builder
 
 RUN git clone https://github.com/envoyproxy/envoy.git
-RUN cd envoy && env ENVOY_SRCDIR=$(pwd) ./ci/do_ci.sh  bazel.release.server_only
+RUN cd envoy && git checkout v1.12.1 && env ENVOY_SRCDIR=$(pwd) ./ci/do_ci.sh  bazel.release.server_only
 
 FROM centos:7.6.1810
 
